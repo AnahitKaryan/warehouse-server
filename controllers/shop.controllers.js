@@ -3,11 +3,11 @@ const Errors = require('./../errorsCollection/errors');
 const HttpStatus = require('http-status-codes');
 const connection = require('./../database/connection');
 
-module.exports.getProducts = async function(req, res) {
+module.exports.getShops = async function(req, res) {
     try{
-        await connection.query('SELECT * FROM Products', function (error, results, fields) {
+        await connection.query('SELECT * FROM Shops', function (error, results, fields) {
             if (error) {
-                throw new Errors.InternalServerError('Products not found');
+                throw new Errors.InternalServerError('Shops not found');
             } else {
                 res.status(200).json(results);
             }
@@ -16,12 +16,12 @@ module.exports.getProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri select products" + err);
+        console.log("Error in queri select Shops" + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
 
-module.exports.setProducts = async function (req, res) {
+module.exports.setShops = async function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
@@ -29,11 +29,11 @@ module.exports.setProducts = async function (req, res) {
     let data = req.body;
     delete data["tableData"];
     try {
-        await connection.query('INSERT INTO Products SET ? ', data , function (error, results, fields) {
+        await connection.query('INSERT INTO Shops SET ? ', data , function (error, results, fields) {
             if (error) {
-                throw new Errors.InternalServerError('Products set query error');
+                throw new Errors.InternalServerError('Shops set query error');
             } else {
-                console.log('Added Row(s) in Products table:', results.affectedRows);
+                console.log('Added Row(s) in Shops table:', results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -41,20 +41,20 @@ module.exports.setProducts = async function (req, res) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404
         }
-        console.log("Error in queri insert Products" + err);
+        console.log("Error in queri insert Shops" + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
 
-module.exports.updateProducts = async function(req, res) {
-    const data = [req.body.name, req.body.type, req.body.constly, req.body.price, req.body.quantity, req.body.status, req.body.date1, req.body.date2, req.body.priority, req.body.id ];
-    const query = `UPDATE Products SET name=?,type=?,constly=?,price=?,quantity=?,status=?,date1=?,date2=?,priority=? where id=?`;
+module.exports.updateShops = async function(req, res) {
+    const data = [req.body.name, req.body.status, req.body.id ];
+    const query = `UPDATE Shops SET name=?, status=? where id=?`;
     try {
         await connection.query(query, data, function (error, results, fields) {
             if (error) {
-                throw new Errors.InternalServerError('Products not found');
+                throw new Errors.InternalServerError('Shops not found');
             } else {
-                console.log('Updated Row(s) in Products table:', results.affectedRows);
+                console.log('Updated Row(s) in Shops table:', results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -62,18 +62,18 @@ module.exports.updateProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri update products" + err);
+        console.log("Error in queri update Shops" + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
 
-module.exports.deleteProducts = async function(req, res) {
+module.exports.deleteShops = async function(req, res) {
     try {
-        await connection.query(`DELETE FROM Products WHERE id = ?`, req.body.id , function (error, results, fields) {
+        await connection.query(`DELETE FROM Shops WHERE id = ?`, req.body.id , function (error, results, fields) {
             if (error) {
-                throw new Errors.InternalServerError('Products not found');
+                throw new Errors.InternalServerError('Shops not found');
             } else {
-                console.log('Deleted Row(s) in Products table:', results.affectedRows);
+                console.log('Deleted Row(s) in Shops table:', results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -81,7 +81,7 @@ module.exports.deleteProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri update products" + err);
+        console.log("Error in queri update Shops" + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

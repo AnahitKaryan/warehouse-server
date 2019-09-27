@@ -16,7 +16,7 @@ router.route('/')
     check('date2').not().isEmpty().withMessage('-----Date2 is empty ------'),
     check('priority').not().isEmpty().withMessage('-----Priorityy is empty ------')
 
-   ], controllers.setProducts)
+], controllers.setProducts)
 .put(controllers.updateProducts)
 .delete(controllers.deleteProducts);
 
