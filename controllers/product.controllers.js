@@ -26,6 +26,7 @@ module.exports.setProducts = async function (req, res) {
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
     }
+    req.body.id = req.body.tableData.id;
     let data = req.body;
     delete data["tableData"];
     try {
@@ -69,7 +70,7 @@ module.exports.updateProducts = async function(req, res) {
 
 module.exports.deleteProducts = async function(req, res) {
     try {
-        await connection.query(`DELETE FROM Products WHERE id = ?`, req.body.id , function (error, results, fields) {
+        await connection.query(`DELETE FROM Products WHERE id = ?`, req.body.tableData.id , function (error, results, fields) {
             if (error) {
                 throw new Errors.InternalServerError('Products not found');
             } else {

@@ -11,7 +11,7 @@ router.route('/')
     check('email').not().isEmpty().withMessage('-----Email is empty ------').normalizeEmail().isEmail().withMessage('-----Incorect email------'),
     check('birthdate').not().isEmpty().withMessage('-----Birthay is empty ------').withMessage('-----Incorect birthay------'),
     check('gemus').isIn(['male','female']).withMessage('----- Incorect gender,please enter the male or female------'),
-    check('password').not().isEmpty().withMessage('----Password is empty!-----').matches(/^[0-9]{5,}$/).withMessage('-----Incorect password ------')
+    check('password').not().isEmpty().withMessage('----Password is empty!-----').matches(/^[A-Za-z\d@$!%*?&]{5,}$/).withMessage('-----Incorect password ------')
 ], controllers.setUsers);
 
-module.exports = router; 
+module.exports = router;
