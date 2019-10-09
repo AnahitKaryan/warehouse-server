@@ -1,0 +1,3 @@
+{
+  path: process.cwd() + '/db/sequelize-meta.json'
+}

@@ -1,22 +1,24 @@
 const connection = require('./../database/connection');
 const Errors = require('./../errorsCollection/errors');
 const HttpStatus = require('http-status-codes');
+const bcrypt = require('bcrypt');
 
 module.exports.getCurrentUser = async function (req, res) {
-    var email = req.body.email;
-    var password = req.body.password;
+    const email = req.body.email;
+    const password = req.body.password;
     try {
         if (email && password) {
-            await connection.query(
-                {
-                 sql: 'SELECT * FROM `Users` WHERE `email` = ? AND `password` = ?' ,
-                 timeout: 40000, // 40s
-                 values: [email,password]
-                }, function(error, results, fields) {
+            await connection.query('SELECT password FROM Users WHERE email = ?', [email], async function(error, results, fields) {
                     if (results.length > 0) {
-                        req.session.loggedin = true;
-                        req.session.email = email;
-                        res.status(200).json(results);
+                        const match = await bcrypt.compare(password, results[0].password);
+                         if(match) {
+                            req.session.loggedin = true;
+                            req.session.email = email;
+                            res.status(200).json(results);
+                         } else {
+                            res.send('Incorrect Password!');
+                         }
+                        
                     } else {
                         res.send('Incorrect Email and/or Password!');
                     }

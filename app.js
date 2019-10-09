@@ -11,6 +11,8 @@ const products = require('./routers/product.routers.js');
 const shops = require('./routers/shop.routers.js');
 const senders = require('./routers/sender.routers.js');
 
+const config = require('./configs/dbConfig');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,7 +25,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(session({
-	secret: 'secret',
+	secret: '!@#$%^&*',
 	resave: true,
 	saveUninitialized: true
 }));
@@ -44,5 +46,5 @@ app.route('/home')
 	response.end();
 });
 
-app.listen(8081);
+app.listen(config.DN_PORT);
 module.exports = app;

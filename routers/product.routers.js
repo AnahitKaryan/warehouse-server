@@ -2,9 +2,10 @@ const express = require('express');
 const { check } = require('express-validator');
 const router = express.Router();
 const controllers = require('../controllers/product.controllers.js');
+const middlewares = require('../middlewares/isUserMiddlewares');
 
 router.route('/')
-.get(controllers.getProducts)
+.get(middlewares.isUserMiddleware, controllers.getProducts)
 .post([
     check('name').not().isEmpty().withMessage('----Name is empty!-----'),
     check('type').not().isEmpty().withMessage('-----Type is empty ------'),
@@ -16,8 +17,8 @@ router.route('/')
     check('date2').not().isEmpty().withMessage('-----Date2 is empty ------'),
     check('priority').not().isEmpty().withMessage('-----Priorityy is empty ------')
 
-], controllers.setProducts)
-.put(controllers.updateProducts)
-.delete(controllers.deleteProducts);
+], middlewares.isUserMiddleware, controllers.setProducts)
+.put(middlewares.isUserMiddleware, controllers.updateProducts)
+.delete(middlewares.isUserMiddleware, controllers.deleteProducts);
 
 module.exports = router; 
