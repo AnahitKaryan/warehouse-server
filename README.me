@@ -3,11 +3,11 @@ How to intall and run this APP.
 1.Create Database:
 Build a database called "Warehouse" in mysql and build  the following tables:
   
-  1.create table Products(id int not null auto_increment primary key,name varchar(255),type varchar(255),consily int,price int,quantity int, status varchar(255),date1 varchar(255),date2 varchar(255),priority int);
+  1.create table Products(id int not null primary key,name varchar(255),type varchar(255),consily int,price int,quantity int, status varchar(255),date1 varchar(255),date2 varchar(255),priority int);
 
-  2.create table Shops(id int not null auto_increment primary key,name varchar(255),status varchar(255));
+  2.create table Shops(id int not null primary key,name varchar(255),status varchar(255));
 
-  3.create table Senders(id int not null auto_increment primary key,name varchar(255),surname varchar(255));
+  3.create table Senders(id int not null primary key,name varchar(255),surname varchar(255));
 
   4.create table Users (id int not null auto_increment primary key,name varchar(255),surname varchar(255),birthdate varchar(255),gemus varchar(255),email varchar(255),password varchar(255) );
 
@@ -20,11 +20,12 @@ insert into Products values (1,'Coca-cola','Drink',500,550,15,'Is useful','Sep 1
 
 1.Clone warehouse-server repository.
 2.Enter the project folder and execute the command "git checkout warehouse-server-branch" with terminal.
-3.Make "․env" file in project folder and fill in your database with the following data:
-  DB_HOST=''
-  DB_USER=''
-  DB_PASSWORD=''
-  DB_DATABASE=''
+3.Enter configs folder dbConfig.js file and fill in the appropriate data:
+    DN_HOST ,
+    DN_PORT ,
+    DB_USER ,
+    DB_PASSWORD ,
+    B_DATABASE.
 
 4.Execute the command "npm ci" with terminal.
 5.Then execute the command "npm start".

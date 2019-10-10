@@ -18,7 +18,7 @@ module.exports.getUsers = async function(req, res){
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri select Users" + err);
+        console.log('Error in queri select Users' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -58,7 +58,7 @@ module.exports.setUsers = async function(req, res) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404
         }
-        console.log("Error in queri insert Users" + err);
+        console.log('Error in queri insert Users' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

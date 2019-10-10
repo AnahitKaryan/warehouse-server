@@ -16,7 +16,7 @@ module.exports.getProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri select products" + err);
+        console.log('Error in queri select product' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -28,7 +28,7 @@ module.exports.setProducts = async function (req, res) {
     }
     req.body.id = req.body.tableData.id;
     let data = req.body;
-    delete data["tableData"];
+    delete data['tableData'];
     try {
         await connection.query('INSERT INTO Products SET ? ', data , function (error, results, fields) {
             if (error) {
@@ -42,7 +42,7 @@ module.exports.setProducts = async function (req, res) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404
         }
-        console.log("Error in queri insert Products" + err);
+        console.log('Error in queri insert Products' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -63,7 +63,7 @@ module.exports.updateProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri update products" + err);
+        console.log('Error in queri update products' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -82,7 +82,7 @@ module.exports.deleteProducts = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri update products" + err);
+        console.log('Error in queri update products' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

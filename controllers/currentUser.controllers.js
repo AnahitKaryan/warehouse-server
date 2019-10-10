@@ -11,16 +11,16 @@ module.exports.getCurrentUser = async function (req, res) {
             await connection.query('SELECT password FROM Users WHERE email = ?', [email], async function(error, results, fields) {
                     if (results.length > 0) {
                         const match = await bcrypt.compare(password, results[0].password);
-                         if(match) {
+                        if(match) {
                             req.session.loggedin = true;
-                            req.session.email = email;
+                            req.session.email = email; console.log( req.session.email)
                             res.status(200).json(results);
-                         } else {
-                            res.send('Incorrect Password!');
-                         }
+                        } else {
+                            res.status(400).send('Incorrect Password!');
+                        }
                         
                     } else {
-                        res.send('Incorrect Email and/or Password!');
+                        res.status(401).send('Incorrect Email and/or Password!');
                     }
                     res.end();
                 }
@@ -34,7 +34,7 @@ module.exports.getCurrentUser = async function (req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log("Error in queri select currentUser" + err);
+        console.log('Error in queri select currentUser' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

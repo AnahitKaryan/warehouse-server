@@ -9,7 +9,6 @@ router.route('/')
 .post([
     check('name').not().isEmpty().withMessage('----Name is empty!-----'),
     check('surname').not().isEmpty().withMessage('-----Surname is empty ------')
-
 ], middlewares.isUserMiddleware, controllers.setSenders)
 .put(middlewares.isUserMiddleware, controllers.updateSenders)
 .delete(middlewares.isUserMiddleware, controllers.deleteSenders);

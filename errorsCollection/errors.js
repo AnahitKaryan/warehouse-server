@@ -33,17 +33,6 @@ class Unauthorized extends ExtendableError {
     }
 }
 
-// 403 Forbidden
-class Forbidden extends ExtendableError {
-    constructor(m) {
-        if (arguments.length === 0) {
-            super('forbidden');
-        } else {
-            super(m);
-        }
-    }
-}
-
 // 404 Not Found
 class NotFound extends ExtendableError {
     constructor(m) {
@@ -90,7 +79,6 @@ class InternalServerError extends ExtendableError {
 
 module.exports.BadRequest = BadRequest;
 module.exports.Unauthorized = Unauthorized;
-module.exports.Forbidden = Forbidden;
 module.exports.NotFound = NotFound;
 module.exports.Conflict = Conflict;
 module.exports.UnprocessableEntity = UnprocessableEntity;
