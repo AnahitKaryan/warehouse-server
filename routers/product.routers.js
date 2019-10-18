@@ -5,7 +5,7 @@ const controllers = require('../controllers/product.controllers.js');
 const middlewares = require('../middlewares/isUserMiddlewares');
 
 router.route('/')
-.get(middlewares.isUserMiddleware, controllers.getProducts)
+.get(controllers.getProducts)
 .post([
     check('name').not().isEmpty().withMessage('----Name is empty!-----'),
     check('type').not().isEmpty().withMessage('-----Type is empty ------'),
@@ -21,4 +21,4 @@ router.route('/')
 .put(middlewares.isUserMiddleware, controllers.updateProducts)
 .delete(middlewares.isUserMiddleware, controllers.deleteProducts);
 
-module.exports = router; 
+module.exports = router;

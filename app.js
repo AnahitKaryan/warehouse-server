@@ -24,9 +24,14 @@ app.use(function (req, res, next) {
 
 app.use(session({
 	secret: '!@#$%^&*()',
-	resave: true,
-	saveUninitialized: true
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+      httpOnly: false,
+      secure: false,
+    }
 }));
+
 
 app.use('/signup', users);
 app.use('/signin', currentUsers);
