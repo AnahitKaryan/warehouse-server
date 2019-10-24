@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 const router = express.Router();
 const controllers = require('../controllers/product.controllers.js');
 const middlewares = require('../middlewares/isUserMiddlewares');
-
+// middlewares.isUserMiddleware,
 router.route('/')
 .get(controllers.getProducts)
 .post([
@@ -17,8 +17,8 @@ router.route('/')
     check('date2').not().isEmpty().withMessage('-----Date2 is empty ------'),
     check('priority').not().isEmpty().withMessage('-----Priorityy is empty ------')
 
-], middlewares.isUserMiddleware, controllers.setProducts)
-.put(middlewares.isUserMiddleware, controllers.updateProducts)
-.delete(middlewares.isUserMiddleware, controllers.deleteProducts);
+], controllers.setProducts)
+.put(controllers.updateProducts)
+.delete(controllers.deleteProducts);
 
 module.exports = router;

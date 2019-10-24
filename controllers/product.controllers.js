@@ -26,9 +26,7 @@ module.exports.setProducts = async function (req, res) {
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
     }
-    req.body.id = req.body.tableData.id;
-    let data = req.body;
-    delete data['tableData'];
+    const data = req.body;
     try {
         await connection.query('INSERT INTO Products SET ? ', data , function (error, results, fields) {
             if (error) {
@@ -49,6 +47,7 @@ module.exports.setProducts = async function (req, res) {
 
 module.exports.updateProducts = async function(req, res) {
     const data = [req.body.name, req.body.type, req.body.constly, req.body.price, req.body.quantity, req.body.status, req.body.date1, req.body.date2, req.body.priority, req.body.id ];
+    console.log('update data----' + data);
     const query = `UPDATE Products SET name=?,type=?,constly=?,price=?,quantity=?,status=?,date1=?,date2=?,priority=? where id=?`;
     try {
         await connection.query(query, data, function (error, results, fields) {
@@ -69,8 +68,8 @@ module.exports.updateProducts = async function(req, res) {
 }
 
 module.exports.deleteProducts = async function(req, res) {
-    try {
-        await connection.query(`DELETE FROM Products WHERE id = ?`, req.body.tableData.id , function (error, results, fields) {
+    try { 
+        await connection.query(`DELETE FROM Products WHERE id = ?`, req.body.id , function (error, results, fields) {
             if (error) {
                 throw new Errors.InternalServerError('Products not found');
             } else {
