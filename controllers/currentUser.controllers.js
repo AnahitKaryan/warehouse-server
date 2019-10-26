@@ -13,13 +13,16 @@ module.exports.getCurrentUser = async function (req, res) {
                         const match = await bcrypt.compare(password, results[0].password);
                         if(match) {
                             
-                            req.session.cookie.email = email; console.log( req.session.cookie.email)
+                            req.session.cookie.email = email; console.log('req.session.cookie.emai' + req.session.cookie.email)
                             req.session.cookie.password = password;
-
-                            res.cookie("userData", "aaaaaaaaa",{ maxAge: 900000, httpOnly: true })
+                            req.session.views = (req.session.views || 0) + 1
+                            res.setHeader('Cookie', req.session.cookie.email + req.session.cookie.password)
+                            
+                            console.log('res ' + res.headers);
                             res.status(200)
-                            //.send("cookie sent")
-                            res.json(results);
+                            // res.json(results);
+                            res.end(req.session.views + ' views')
+
                         } else {
                             res.status(400).send('Incorrect Password!');
                         }

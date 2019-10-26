@@ -13,4 +13,4 @@ router.route('/')
 .put( controllers.updateSenders)
 .delete( controllers.deleteSenders);
 
-module.exports = router; 
+module.exports = router;

@@ -32,7 +32,6 @@ app.use(session({
     }
 }));
 
-
 app.use('/signup', users);
 app.use('/signin', currentUsers);
 app.use('/products', products);
