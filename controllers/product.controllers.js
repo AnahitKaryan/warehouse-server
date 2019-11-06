@@ -47,7 +47,6 @@ module.exports.setProducts = async function (req, res) {
 
 module.exports.updateProducts = async function(req, res) {
     const data = [req.body.name, req.body.type, req.body.constly, req.body.price, req.body.quantity, req.body.status, req.body.date1, req.body.date2, req.body.priority, req.body.id ];
-    console.log('update data----' + data);
     const query = `UPDATE Products SET name=?,type=?,constly=?,price=?,quantity=?,status=?,date1=?,date2=?,priority=? where id=?`;
     try {
         await connection.query(query, data, function (error, results, fields) {

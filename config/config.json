@@ -4,22 +4,7 @@
         "password": "a28762",
         "database": "warehouse",
         "host": "127.0.0.1",
-        "dialect": "mysql",
-        // Use a different storage type. Default: sequelize
-        "migrationStorage": "json",
-        // Use a different file name. Default: sequelize-meta.json
-        "migrationStoragePath": "sequelizeMeta.json",
-        // Use a different table name. Default: SequelizeMeta
-        "migrationStorageTableName": "sequelize_meta",
-        // Use a different schema for the SequelizeMeta table
-        "migrationStorageTableSchema": "custom_schema",
-        // Use a different storage. Default: none
-        "seederStorage": "json",
-        // Use a different file name. Default: sequelize-data.json
-        "seederStoragePath": "sequelizeData.json",
-        // Use a different table name. Default: SequelizeData
-        "seederStorageTableName": "sequelize_data"
-
+        "dialect": "mysql"
     },
     "test": {
         "username": "root",

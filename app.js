@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
 
@@ -10,7 +11,9 @@ const currentUsers = require('./routers/currentUser.routers.js');
 const products = require('./routers/product.routers.js');
 const shops = require('./routers/shop.routers.js');
 const senders = require('./routers/sender.routers.js');
+const sessions = require('./routers/sessions.routers.js');
 const config = require('./configs/dbConfig');
+const sessionStore = require('./database/connection');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,17 +26,16 @@ app.use(function (req, res, next) {
 });
 
 app.use(session({
-	secret: '!@#$%^&*()',
-    saveUninitialized: true,
-    resave: true,
-    cookie: {
-      httpOnly: false,
-      secure: false,
-    }
+    secret: '!@#$%^&*()',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true }
 }));
 
 app.use('/signup', users);
 app.use('/signin', currentUsers);
+app.use('/signout', sessions);
 app.use('/products', products);
 app.use('/shops', shops);
 app.use('/senders', senders);

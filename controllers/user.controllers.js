@@ -51,9 +51,7 @@ module.exports.setUsers = async function(req, res) {
                     });
                 });
             }
-        });
-
-       
+        }); 
     } catch (err) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404

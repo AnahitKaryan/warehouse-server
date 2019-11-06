@@ -4,7 +4,7 @@ module.exports = {
         return queryInterface.createTable('Products', {
             id: {
                 allowNull: false,
-                autoIncrement: true,
+                autoIncrement: false,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
@@ -15,13 +15,13 @@ module.exports = {
                 type: Sequelize.STRING
             },
             constly: {
-                type: Sequelize.STRING
+                type: Sequelize.INTEGER
             },
-            prices: {
-                type: Sequelize.STRING
+            price: {
+                type: Sequelize.INTEGER
             },
             quantity: {
-                type: Sequelize.STRING
+                type: Sequelize.INTEGER
             },
             status: {
                 type: Sequelize.STRING

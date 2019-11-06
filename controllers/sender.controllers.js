@@ -26,9 +26,7 @@ module.exports.setSenders = async function (req, res) {
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
     }
-    req.body.id = req.body.tableData.id;
-    let data = req.body;
-    delete data['tableData'];
+    const data = req.body;
     try {
         await connection.query('INSERT INTO Senders SET ? ', data , function (error, results, fields) {
             if (error) {
@@ -70,7 +68,7 @@ module.exports.updateSenders = async function(req, res) {
 
 module.exports.deleteSenders = async function(req, res) {
     try {
-        await connection.query(`DELETE FROM Senders WHERE id = ?`, req.body.tableData.id , function (error, results, fields) {
+        await connection.query(`DELETE FROM Senders WHERE id = ?`, req.body.id , function (error, results, fields) {
             if (error) {
                 throw new Errors.InternalServerError('Senders not found');
             } else {

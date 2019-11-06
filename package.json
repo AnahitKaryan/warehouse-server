@@ -1,31 +1,32 @@
 {
-  "name": "warehouse-nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "debug": "nodemon app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^3.0.6",
-    "cors": "^2.8.5",
-    "dotenv": "^8.1.0",
-    "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "express-validator": "^6.2.0",
-    "http-status-codes": "^1.3.2",
-    "mysql": "^2.17.1",
-    "mysql2": "^1.7.0",
-    "sequelize": "^5.21.1",
-    "sequelize-cli": "^5.5.1",
-    "umzug": "^2.2.0"
-  },
-  "devDependencies": {
-    "babel-register": "^6.26.0",
-    "nodemon": "^1.19.2"
-  }
+    "name": "warehouse-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "debug": "nodemon app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "cors": "^2.8.5",
+        "dotenv": "^8.1.0",
+        "express": "^4.17.1",
+        "express-mysql-session": "^2.1.0",
+        "express-session": "^1.16.2",
+        "express-validator": "^6.2.0",
+        "http-status-codes": "^1.3.2",
+        "mysql": "^2.17.1",
+        "mysql2": "^1.7.0",
+        "sequelize": "^5.21.1",
+        "sequelize-cli": "^5.5.1",
+        "umzug": "^2.2.0"
+    },
+    "devDependencies": {
+        "babel-register": "^6.26.0",
+        "nodemon": "^1.19.2"
+    }
 }

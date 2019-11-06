@@ -1,4 +1,3 @@
-
 class ExtendableError extends Error {
     constructor(message) {
         if (new.target === ExtendableError) {
@@ -8,28 +7,6 @@ class ExtendableError extends Error {
         this.name = this.constructor.name;
         this.message = message;
         Error.captureStackTrace(this, this.contructor);
-    }
-}
-
-// 400 Bad Request
-class BadRequest extends ExtendableError {
-    constructor(m) {
-        if (arguments.length === 0) {
-            super('bad request');
-        } else {
-            super(m);
-        }
-    }
-}
-
-// 401 Unauthorized
-class Unauthorized extends ExtendableError {
-    constructor(m) {
-        if (arguments.length === 0) {
-            super('unauthorized');
-        } else {
-            super(m);
-        }
     }
 }
 
@@ -55,16 +32,6 @@ class Conflict extends ExtendableError {
     }
 }
 
-// 422 Unprocessable Entity
-class UnprocessableEntity extends ExtendableError {
-    constructor(m) {
-        if (arguments.length === 0) {
-            super('unprocessable entity');
-        } else {
-            super(m);
-        }
-    }
-}
 
 // 500 Internal Server Error
 class InternalServerError extends ExtendableError {
@@ -77,9 +44,6 @@ class InternalServerError extends ExtendableError {
     }
 }
 
-module.exports.BadRequest = BadRequest;
-module.exports.Unauthorized = Unauthorized;
 module.exports.NotFound = NotFound;
 module.exports.Conflict = Conflict;
-module.exports.UnprocessableEntity = UnprocessableEntity;
 module.exports.InternalServerError = InternalServerError;
