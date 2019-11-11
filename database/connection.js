@@ -1,4 +1,4 @@
-const mysql = require('mysql'); 
+const mysql = require('mysql');
 const env = process.env.NODE_ENV || 'development';
 const config = require('./../config/config.json')[env];
 const session = require('express-session');
@@ -8,7 +8,7 @@ const options = {
     host     : config.host,
     user     : config.username,
     password : config.password,
-    database : config.database 
+    database : config.database
 }
 
 const connection = mysql.createConnection(options);

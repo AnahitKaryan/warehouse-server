@@ -12,7 +12,5 @@ module.exports.isUserMiddleware = async function(req, res, next) {
         next();
     } else {
         console.log('Error massage User not is  loggedin');
-    }   
+    }
  }
-
-  

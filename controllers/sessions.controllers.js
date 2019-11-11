@@ -11,8 +11,7 @@ module.exports.deleteSessions = async function(req, res) {
         req.session.destroy(function(err) {
             console.log('Session destrroy error:' + err);
         })
-    } 
-
+    }
     try {
         await connection.query(`DELETE FROM sessions`,function (error, results, fields) {
             if (error) {

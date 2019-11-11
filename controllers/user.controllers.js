@@ -28,8 +28,8 @@ module.exports.setUsers = async function(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
-     } 
-    const name = req.body.name; 
+     }
+    const name = req.body.name;
     const surname = req.body.surname;
     const birthdate = req.body.birthdate;
     const gemus = req.body.gemus;
@@ -51,7 +51,7 @@ module.exports.setUsers = async function(req, res) {
                     });
                 });
             }
-        }); 
+        });
     } catch (err) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404
