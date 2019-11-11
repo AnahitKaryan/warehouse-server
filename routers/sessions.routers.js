@@ -5,6 +5,6 @@ const controllers = require('../controllers/sessions.controllers.js');
 const middlewares = require('../middlewares/isUserMiddlewares');
 
 router.route('/')
-.delete(middlewares.isUserMiddleware, controllers.deleteSessions);
+.delete(controllers.deleteSessions);
 
 module.exports = router;

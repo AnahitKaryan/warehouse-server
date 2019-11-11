@@ -46,13 +46,16 @@ How to intall and run this APP.
 1.Install mysql database.
 2.Install nodejs.
 
-
 Project run:
 
 1.Clone warehouse-server repository.
 2.Enter the project folder and execute the command "git checkout warehouse-server-branch" with terminal.
-3.Enter configs folder dbConfig.js, config folder config.json files and fill in the appropriate data: host,port,user,password,database.
-4.Create warehouse database in mysql.
-5.Execute the command "npm ci" with terminal.
-6.Execute the command "node_modules/.bin/sequelize db:migrate" with terminal.
-7.Then execute the command "npm start".
+3.Enter config folder config.json files and fill in the appropriate data: host,username,password,database.
+4.Enter configs folder config.js files and fill in the appropriate data: port,secret,key.
+5.Create warehouse database in mysql.
+6.Execute the command "npm ci" with terminal.
+7.
+  1.If you want to make a production mode:
+   Then execute the command "npm start".
+  2.If you want to make a development mode:
+   Then execute the command "npm run debug".

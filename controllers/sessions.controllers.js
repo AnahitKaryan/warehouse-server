@@ -5,10 +5,14 @@ const connection = require('./../database/connection');
 const sessionStore = require('./../database/connection');
 
 module.exports.deleteSessions = async function(req, res) {
-    sessionStore.close();
-    req.session.destroy(function(err) {
-        console.log('Session destrroy error:' + err);
-    })
+    if (req.session.user && req.cookies.session_id) {
+        res.clearCookie('session_id');
+        sessionStore.close();
+        req.session.destroy(function(err) {
+            console.log('Session destrroy error:' + err);
+        })
+    } 
+
     try {
         await connection.query(`DELETE FROM sessions`,function (error, results, fields) {
             if (error) {

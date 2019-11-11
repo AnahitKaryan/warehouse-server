@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         date1: DataTypes.STRING,
         date2: DataTypes.STRING,
         priority: DataTypes.STRING
-    }, {});
+    }, { 
+        timestamps: false
+    }
+    );
     Product.associate = function(models) {
     // associations can be defined here
     };

@@ -1,14 +1,14 @@
 const mysql = require('mysql'); 
-const config = require('./../configs/dbConfig');
-
+const env = process.env.NODE_ENV || 'development';
+const config = require('./../config/config.json')[env];
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 
 const options = {
-    host     : config.DB_HOST,
-    user     : config.DB_USER ,
-    password : config.DB_PASSWORD ,
-    database : config.DB_DATABASE 
+    host     : config.host,
+    user     : config.username,
+    password : config.password,
+    database : config.database 
 }
 
 const connection = mysql.createConnection(options);

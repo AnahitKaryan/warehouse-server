@@ -12,9 +12,8 @@ module.exports.getCurrentUser = async function (req, res) {
                     if (results.length > 0) {
                         const match = await bcrypt.compare(password, results[0].password);
                         if(match) {
-                            req.session.user = email + password;
-                            res.cookie('user', req.session.user, { maxAge: 900000});
-                            res.setHeader('Cookie', req.session.user);
+                            req.session.user = email;
+                            req.session.views = (req.session.views || 0) + 1;
                             res.status(200)
                             res.json(results);
                         } else {

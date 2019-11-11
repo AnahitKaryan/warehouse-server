@@ -16,7 +16,6 @@ router.route('/')
     check('date1').not().isEmpty().withMessage('-----Date1------'),
     check('date2').not().isEmpty().withMessage('-----Date2 is empty ------'),
     check('priority').not().isEmpty().withMessage('-----Priorityy is empty ------')
-
 ], middlewares.isUserMiddleware, controllers.setProducts)
 .put(middlewares.isUserMiddleware, controllers.updateProducts)
 .delete(middlewares.isUserMiddleware, controllers.deleteProducts);

@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
         gemus: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING
-    }, {});
+    }, { 
+        timestamps: false
+    });
     User.associate = function(models) {
     // associations can be defined here
     };
