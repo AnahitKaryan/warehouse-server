@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const Errors = require('./../errorsCollection/errors');
 const HttpStatus = require('http-status-codes');
 const connection = require('./../database/connection');
+const log = require('./../config/logs');
 
 module.exports.getSenders = async function(req, res) {
     try{
@@ -16,7 +17,7 @@ module.exports.getSenders = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log('Error in queri select Senders' + err);
+        log.info('Error in queri select Senders' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -32,7 +33,7 @@ module.exports.setSenders = async function (req, res) {
             if (error) {
                 throw new Errors.InternalServerError('Senders set query error');
             } else {
-                console.log('Added Row(s) in Senders table:', results.affectedRows);
+                log.info('Added Row(s) in Senders table:' + results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -40,7 +41,7 @@ module.exports.setSenders = async function (req, res) {
         if (err instanceof Errors.Conflict) {
             return res.status(HttpStatus.Conflict).send({ message: err.message }); // 404
         }
-        console.log('Error in queri insert Senders' + err);
+        log.info('Error in queri insert Senders' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -53,7 +54,7 @@ module.exports.updateSenders = async function(req, res) {
             if (error) {
                 throw new Errors.InternalServerError('Senders not found');
             } else {
-                console.log('Updated Row(s) in Senders table:', results.affectedRows);
+                log.info('Updated Row(s) in Senders table:' + results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -61,7 +62,7 @@ module.exports.updateSenders = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log('Error in queri update Senders' + err);
+        log.info('Error in queri update Senders' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }
@@ -72,7 +73,7 @@ module.exports.deleteSenders = async function(req, res) {
             if (error) {
                 throw new Errors.InternalServerError('Senders not found');
             } else {
-                console.log('Deleted Row(s) in Senders table:', results.affectedRows);
+                log.info('Deleted Row(s) in Senders table:' + results.affectedRows);
                 res.status(200).json(results);
             }
         });
@@ -80,7 +81,7 @@ module.exports.deleteSenders = async function(req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log('Error in queri update Senders' + err);
+        log.info('Error in queri update Senders' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

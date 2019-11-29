@@ -2,6 +2,7 @@ const connection = require('./../database/connection');
 const Errors = require('./../errorsCollection/errors');
 const HttpStatus = require('http-status-codes');
 const bcrypt = require('bcrypt');
+const log = require('./../config/logs');
 
 module.exports.getCurrentUser = async function (req, res) {
     const email = req.body.email;
@@ -15,7 +16,7 @@ module.exports.getCurrentUser = async function (req, res) {
                             req.session.user = email;
                             req.session.views = (req.session.views || 0) + 1;
                             res.status(200)
-                            res.json(results);
+                            res.send('Successful login');
                         } else {
                             res.status(400).send('Incorrect Password!');
                         }
@@ -34,7 +35,7 @@ module.exports.getCurrentUser = async function (req, res) {
         if (err instanceof Errors.NotFound) {
             return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
         }
-        console.log('Error in queri select currentUser' + err);
+        log.info('Error in queri select currentUser' + err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
     }
 }

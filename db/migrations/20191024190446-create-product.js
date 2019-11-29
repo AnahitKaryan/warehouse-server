@@ -33,7 +33,7 @@ module.exports = {
                 type: Sequelize.STRING
             },
             priority: {
-                type: Sequelize.STRING
+                type: Sequelize.INTEGER
             }
             });
     },

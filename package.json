@@ -5,13 +5,14 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js",
-        "debug": "nodemon app.js"
+        "start": "set NODE_ENV=production && node app.js | bunyan -l 'warn'",
+        "debug": "set NODE_ENV=development && nodemon app.js | bunyan -l 'info'"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^3.0.6",
+        "bunyan": "^1.8.12",
         "cookie-parser": "^1.4.4",
         "cors": "^2.8.5",
         "dotenv": "^8.1.0",
