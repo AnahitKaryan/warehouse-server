@@ -40,19 +40,19 @@ Runs the app in the production mode.<br />
 ├── warehouse-server
 │   ├── controllers - Defines app routes logic.
 │   │   ├── currentUser.controllers.js - user checking function.
-│   │   └── product.controllers.js - function for get,post,put and delete from of Products.
+│   │   ├── product.controllers.js - function for get,post,put and delete from of Products.
 │   │   ├── sender.controllers.js - function for get,post,put and delete from of Senders.
-│   │   └── shop.controllers.js - function for get,post,put and delete from of Shops.
+│   │   ├── shop.controllers.js - function for get,post,put and delete from of Shops.  |
 │   │   ├── user.controllers.js.js - function for get,post from of Users.
 │   │   └── sessoin.controllers.js - function for deleting from of sessions.
 │   ├── middlewares - All middlwares.
-│   │   ├── isUserMiddlewares.js - checking logged in status middlware.
+│   │   └── isUserMiddlewares.js - checking logged in status middlware.
 │   ├── database - database files.
-│   │   ├── connection.js - connect database and server.
+│   │   └── connection.js - connect database and server.
 │   ├── routes - All routes for different entities in different files.
 │   │   ├── currentUser.routers.js - router for current user.
 │   │   ├── product.routers.js - router for product.
-│   │   └── sender.routers.js - router for sender.
+│   │   ├── sender.routers.js - router for sender.
 │   │   ├── sessions.routers.js - router for session.
 │   │   ├── shop.routers.js - router for shop.
 │   │   └── user.routers.js - router for user.
@@ -65,89 +65,17 @@ Runs the app in the production mode.<br />
 │   │   ├── models - Contains database models.
 │   │   │   ├── index.js - sequelize file
 │   │   │   ├── product.js - model for product.
-│   │   │   └── sender.js - model for sender.
+│   │   │   ├── sender.js - model for sender.
 │   │   │   ├── shop.js - model for shop.
 │   │   │   └── user.js - model for user.
 |   ├── errorsCollection - for diffeent cases errors collection.
 │   │   └── error.js - errors collection file.
-|   ├── config - application configuration settings and logging.
-│   │   └── config.json - contains application configuration settings such as database configuration.
-│   │   └── log.js - file which bunyan loger cteating.
-|   ├── package.json -  the project name,version,scripts and dependencies.
-|   ├── package-lock.json - the project name,version and dependencies.
-|   ├── README.md - a guide to describing and using this project.
-|   ├── app.js - project primary file that runs the server.
-|   ├── sequelizeMeta.json - sequelize tables creating file.
-|   ├── .gitignore - lists the files the git should ignor.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-├── frontend
-|  ├── config - Contains config files .
-|  |  ├── jest
-|  |  |  ├── cssTransform.js -  transform config option to specify how css are transformed.
-|  |  |  └── fieTransform.js -  Transform config option to specify how assets are transformed.
-|  |  ├── env.js - The environment variables configuration
-|  |  ├── modules.js - Modules configuration 
-|  |  ├── paths.js - Paths configuration
-|  |  ├── webpack.config.js - webpack configuration 
-|  |  └── webpackDevServer.config.js - webpack dev server configuration
-|  ├── public - Contains main index.js files and logo.
-|  ├── scripts - Contains scripts for start , build or test .
-|  |  ├──  build.js - create program for production mode
-|  |  └──  start.js - start program
-|  ├── src - Contains all components and logic files.
-|  |  ├── components - All components for this project.
-|  |  |  ├──  audioTable.jsx - show audio file, edit, delete.  
-|  |  |  ├──  home.jsx - show home page.
-|  |  |  ├──  imageTable.jsx - show image file, edit, delete. 
-|  |  |  ├──  login.jsx - login user.
-|  |  |  ├──  modal.jsx - show edit modal. 
-|  |  |  ├──  navbar.jsx - show sign up and sign in button, when user logged show view all, upload and logout button
-|  |  |  ├──  pagination.jsx - Change page number and get new data 
-|  |  |  ├──  register.jsx - User registration
-|  |  |  ├──  upload.jsx - upload new file
-|  |  |  └──  view.jsx - show file
-|  |  ├── config - Contains all project config.
-|  |  |  └──  config.js - Api configuration for send and get data
-|  |  ├──  DAO Sending requests .
-|  |  |  ├──  audio.DAO.js - Add, get, update, delete audio file requests
-|  |  |  ├──  image.DAO.js - Add, get, update, delete image file requests
-|  |  |  └──  user.DAO.js - User registration, login and logout request
-|  |  ├── store - Mobx store for all components.
-|  |  |  ├──  audio.stor.js - Store for audio file
-|  |  |  ├──  image.stor.js - Store for image file
-|  |  |  ├──  upload.store.js - Store for uploading file
-|  |  |  └──  user.store.js - Store or user
-|  |  ├── app.js - Start .
-|  |  └── index.js - App component render this.
-├── .babelrc - babel configuration
-├── .gitignore 
-├── package-lock.json
-├── package.json 
-└── README.md
+|   └── config - application configuration settings and logging.
+│       ├── config.json - contains application configuration settings such as database configuration.
+│       └── log.js - file which bunyan loger cteating.
+├── package.json -  the project name,version,scripts and dependencies.
+├── package-lock.json - the project name,version and dependencies.
+├── README.md - a guide to describing and using this project.
+├── app.js - project primary file that runs the server.
+├── sequelizeMeta.json - sequelize tables creating file.
+└── .gitignore - lists the files the git should ignor.
