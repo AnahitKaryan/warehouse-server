@@ -9,4 +9,4 @@ module.exports.isUserMiddleware = async function(req, res, next) {
     } else {
         log.info({'statusCode': res.statusCode}, 'Error massage User is not loggedin');
     }
- }
+}
