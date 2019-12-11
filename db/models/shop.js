@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Shop = sequelize.define('Shop', {
         name: DataTypes.STRING,
-        status: DataTypes.STRING
+        priority: DataTypes.STRING
     }, { 
         timestamps: false
     });

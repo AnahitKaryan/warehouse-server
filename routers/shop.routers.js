@@ -8,7 +8,7 @@ router.route('/')
 .get(middlewares.isUserMiddleware, controllers.getShops)
 .post([
     check('name').not().isEmpty().withMessage('----Name is empty!-----'),
-    check('status').not().isEmpty().withMessage('-----Status is empty ------')
+    check('priority').not().isEmpty().withMessage('-----Priority is empty ------')
 ], middlewares.isUserMiddleware, controllers.setShops)
 .put(middlewares.isUserMiddleware, controllers.updateShops)
 .delete(middlewares.isUserMiddleware, controllers.deleteShops);

@@ -11,7 +11,7 @@ module.exports = {
             name: {
                 type: Sequelize.STRING
             },
-            status: {
+            priority: {
                 type: Sequelize.STRING
             }
         });

@@ -13,6 +13,9 @@ module.exports = {
             },
             surname: {
                 type: Sequelize.STRING
+            },
+            priority: {
+                type: Sequelize.STRING
             }
         });
     },

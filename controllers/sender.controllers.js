@@ -47,8 +47,8 @@ module.exports.setSenders = async function (req, res) {
 }
 
 module.exports.updateSenders = async function(req, res) {
-    const data = [req.body.name, req.body.surname, req.body.id ];
-    const query = `UPDATE Senders SET name=?, surname=? where id=?`;
+    const data = [req.body.name, req.body.surname, req.body.priority, req.body.id ];
+    const query = `UPDATE Senders SET name=?, surname=?, priority=?  where id=?`;
     try {
         await connection.query(query, data, function (error, results, fields) {
             if (error) {

@@ -40,6 +40,7 @@ Runs the app in the production mode.<br />
 ├── warehouse-server
 │   ├── controllers - Defines app routes logic.
 │   │   ├── currentUser.controllers.js - user checking function.
+│   │   ├── history.controllers.js - function for get,post,put and delete from of Histories.
 │   │   ├── product.controllers.js - function for get,post,put and delete from of Products.
 │   │   ├── sender.controllers.js - function for get,post,put and delete from of Senders.
 │   │   ├── shop.controllers.js - function for get,post,put and delete from of Shops.  |
@@ -51,6 +52,7 @@ Runs the app in the production mode.<br />
 │   │   └── connection.js - connect database and server.
 │   ├── routes - All routes for different entities in different files.
 │   │   ├── currentUser.routers.js - router for current user.
+│   │   ├── history.routers.js - router for history.
 │   │   ├── product.routers.js - router for product.
 │   │   ├── sender.routers.js - router for sender.
 │   │   ├── sessions.routers.js - router for session.
@@ -61,9 +63,11 @@ Runs the app in the production mode.<br />
 │   │   │   ├── 20191024185314-create-user.js - migration for user.
 │   │   │   ├── 20191024190446-create-product.js - migration for product.
 │   │   │   ├── 20191024190536-create-shop.js - migration for shop.
-│   │   │   └── 20191024190705-create-sender.js - migration for sender.
+│   │   │   ├── 20191024190705-create-sender.js - migration for sender.
+│   │   │   └── 20191024190805-create-history.js - migration for history.
 │   │   ├── models - Contains database models.
 │   │   │   ├── index.js - sequelize file
+│   │   │   ├── history.js - model for history.
 │   │   │   ├── product.js - model for product.
 │   │   │   ├── sender.js - model for sender.
 │   │   │   ├── shop.js - model for shop.

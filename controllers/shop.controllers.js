@@ -47,8 +47,8 @@ module.exports.setShops = async function (req, res) {
 }
 
 module.exports.updateShops = async function(req, res) {
-    const data = [req.body.name, req.body.status, req.body.id ];
-    const query = `UPDATE Shops SET name=?, status=? where id=?`;
+    const data = [req.body.name, req.body.priority, req.body.id ];
+    const query = `UPDATE Shops SET name=?, priority=? where id=?`;
     try {
         await connection.query(query, data, function (error, results, fields) {
             if (error) {
