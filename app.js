@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 
 const users = require('./routers/user.routers.js');
 const currentUsers = require('./routers/currentUser.routers.js');
+const histories = require('./routers/history.routers.js');
 const products = require('./routers/product.routers.js');
 const shops = require('./routers/shop.routers.js');
 const senders = require('./routers/sender.routers.js');
@@ -56,6 +57,7 @@ app.use(cors({
 app.use('/signup', users);
 app.use('/signin', currentUsers);
 app.use('/signout', sessions);
+app.use('/histories', histories);
 app.use('/products', products);
 app.use('/shops', shops);
 app.use('/senders', senders);
