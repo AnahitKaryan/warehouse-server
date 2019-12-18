@@ -54,7 +54,8 @@ app.use(cors({
     },
 }));
 
-app.use('/signup', users);
+app.use('/users', users);
+app.use('/forgotPassword', users);
 app.use('/signin', currentUsers);
 app.use('/signout', sessions);
 app.use('/histories', histories);

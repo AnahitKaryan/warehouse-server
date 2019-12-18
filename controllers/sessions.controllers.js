@@ -6,6 +6,7 @@ const sessionStore = require('./../database/connection');
 const log = require('./../config/logs');
 
 module.exports.deleteSessions = async function(req, res) {
+    
     if (req.session.user && req.cookies.session_id) {
         res.clearCookie('session_id');
         sessionStore.close();
@@ -13,20 +14,19 @@ module.exports.deleteSessions = async function(req, res) {
             log.info('Session destrroy error:' + err);
         })
     }
+
     try {
         await connection.query(`DELETE FROM sessions`,function (error, results, fields) {
             if (error) {
                 throw new Errors.InternalServerError('sessions not found');
             } else {
                 log.info('Deleted Row(s) in sessions table:' + results.affectedRows);
-                res.status(200).json(results);
+                res.user = '';
+                res.status(HttpStatus.OK).json(results);
             }
         });
     } catch (err) {
-        if (err instanceof Errors.NotFound) {
-            return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
-        }
         log.info('Error in queri update sessions' + err);
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message });
     }
 }

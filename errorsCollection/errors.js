@@ -10,6 +10,17 @@ class ExtendableError extends Error {
     }
 }
 
+// 401 Unauthorized
+class Unauthorized extends ExtendableError {
+    constructor(m) {
+        if (arguments.length === 0) {
+            super('unauthorized');
+        } else {
+            super(m);
+        }
+    }
+}
+
 // 404 Not Found
 class NotFound extends ExtendableError {
     constructor(m) {
@@ -32,7 +43,6 @@ class Conflict extends ExtendableError {
     }
 }
 
-
 // 500 Internal Server Error
 class InternalServerError extends ExtendableError {
     constructor(m) {
@@ -44,6 +54,19 @@ class InternalServerError extends ExtendableError {
     }
 }
 
+// 422 Unprocessable Entity
+class UnprocessableEntity extends ExtendableError {
+    constructor(m) {
+        if (arguments.length === 0) {
+            super('unprocessable entity');
+        } else {
+            super(m);
+        }
+    }
+}
+
+module.exports.Unauthorized = Unauthorized;
 module.exports.NotFound = NotFound;
 module.exports.Conflict = Conflict;
+module.exports.UnprocessableEntity = UnprocessableEntity;
 module.exports.InternalServerError = InternalServerError;

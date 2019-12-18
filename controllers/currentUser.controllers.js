@@ -15,27 +15,29 @@ module.exports.getCurrentUser = async function (req, res) {
                         if(match) {
                             req.session.user = email;
                             req.session.views = (req.session.views || 0) + 1;
-                            res.status(200)
+                            res.status(HttpStatus.OK)
                             res.send('Successful login');
                         } else {
-                            res.status(400).send('Incorrect Password!');
+                            res.status(HttpStatus.UNAUTHORIZED).send('Incorrect Password!');
                         }
                     } else {
-                        res.status(401).send('Incorrect Email and/or Password!');
+                        res.status(HttpStatus.UNAUTHORIZED).send('Incorrect Email and/or Password!');
                     }
                     res.end();
                 }
             );
         } else {
             res.send('Please enter Email and Password!');
-            throw new Errors.InternalServerError('Users not found');
+            throw new Errors.UnprocessableEntity('Empty request');
             res.end();
         }
     } catch (err) {
-        if (err instanceof Errors.NotFound) {
-            return res.status(HttpStatus.NOT_FOUND).send({ message: err.message }); // 404
-        }
         log.info('Error in queri select currentUser' + err);
-        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message }); // 500
+
+        if (err instanceof Errors.UnprocessableEntity) {   
+             return res.status(HttpStatus.UNPROCESSABLE_ENTITY).send({ message: err.message });
+        }
+        
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ error: err, message: err.message });
     }
 }
