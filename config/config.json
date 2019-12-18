@@ -1,0 +1,41 @@
+{
+    "development": {
+        "username" : "root",
+        "password" : "a28762",
+        "database" : "warehouse",
+        "host"     : "127.0.0.1",
+        "dialect"  : "mysql",
+        "options"  : {
+            "port"  : "8081",
+            "secret": "!@#$%^&*",
+            "key"   : "session_id",
+            "origin": "http://localhost:3000"
+        }
+    },
+    "test": {
+        "username" : "root",
+        "password" : "a28762",
+        "database" : "warehouse",
+        "host"     : "127.0.0.1",
+        "dialect"  : "mysql",
+        "options"  : {
+            "port"  : "8081",
+            "secret": "!@#$%^&*",
+            "key"   : "session_id",
+            "origin": "http://localhost:3000"
+        }
+     },
+    "production": {
+        "username" : "root",
+        "password" : "a28762",
+        "database" : "warehouse",
+        "host"     : "127.0.0.1",
+        "dialect"  : "mysql",
+        "options"  : {
+            "port"  : "8081",
+            "secret": "!@#$%^&*",
+            "key"   : "session_id",
+            "origin": "http://localhost:3000"
+        }
+    }
+}
